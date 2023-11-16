@@ -1,4 +1,5 @@
 from math import *
+from tempfile import _TemporaryFileWrapper
 # 1.ülesanne
 print("1.harjutus")
 print("Tere, maailm!") 
@@ -43,18 +44,24 @@ print("5.harjutus")
 print("Leiame diagonaali")
 a=float(input("Esimene kaatet "))
 b=float(input("Teine kaatet "))
-d=sqrt(a**2+b**2)
+d=round(sqrt(a**2+b**2),2)
 
 print("Teie vastus {0}".format(d))
 
 
 # 6.ülesanne
 print("6.harjutus")
-aeg = float(input("Mitu tundi kulus sõiduks? "))
-teepikkus = float(input("Mitu kilomeetrit sõitsid? "))
+try:
+    aeg = float(input("Mitu tundi kulus sõiduks? "))
+    teepikkus = float(input("Mitu kilomeetrit sõitsid? "))
+    kiirus = teepikkus / aeg #oli aeg / teepikkus
+    print("Sinu kiirus oli " + str(kiirus) + " km/h")
+except :
+    print("Andmetüübi viga!")
+
 kiirus = teepikkus / aeg #oli aeg / teepikkus
 
-print("Sinu kiirus oli " + str(kiirus) + " km/h")
+
 
 
 
@@ -104,5 +111,6 @@ print("Võtsite P sõbraga suure pitsa hinnaga 12,90€")
 print("Jätate teenindajale 10% jootraha")
 pitsa=12.9
 jootraha=0.1
-rõõmus=round((pitsa*jootraha+pitsa)/2,2)
-print("Igaüks maksab peaegu "+str(rõõmus))
+p=int(input("Kirjutage P sõbrad, P = "))
+rõõmus=round((pitsa*jootraha+pitsa)/p,2)
+print("Igaüks maksab peaegu "+str(rõõmus)+"Euro")
